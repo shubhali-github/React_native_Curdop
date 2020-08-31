@@ -1,9 +1,16 @@
-// screens/UserScreen.js
-
 import React, { Component } from "react";
-import { StyleSheet, ScrollView, ActivityIndicator, View } from "react-native";
+import {
+  StyleSheet,
+  ScrollView,
+  ActivityIndicator,
+  View,
+  Text,
+  FlatList,
+  Button,
+} from "react-native";
 import { ListItem } from "react-native-elements";
 import firebase from "./../database/firebaseDb";
+import { List } from "react-native-paper";
 
 class UserScreen extends Component {
   constructor() {
@@ -23,6 +30,17 @@ class UserScreen extends Component {
     this.unsubscribe();
   }
 
+  FlatListItemSeparator = () => {
+    return (
+      <View
+        style={{
+          height: 1,
+          width: "100%",
+          backgroundColor: "#607D8B",
+        }}
+      />
+    );
+  };
   getCollection = (querySnapshot) => {
     const userArr = [];
     querySnapshot.forEach((res) => {
@@ -51,26 +69,53 @@ class UserScreen extends Component {
     }
     return (
       <ScrollView style={styles.container}>
+        <View style={styles.MainContainer}>
+          <FlatList
+            data={this.state.userArr}
+            width="100%"
+            ItemSeparatorComponent={this.FlatListItemSeparator}
+            renderItem={({ item }) => (
+              <View style={styles.containers}>
+                <Text style={styles.buttonContainer}>{item.name}</Text>
+                <Text style={styles.buttonContainer}>{item.email}</Text>
+                <Text style={styles.buttonContainer}>{item.address}</Text>
+                <View style={styles.buttonContainers}>
+                  <Button
+                    title="Show Empoyee"
+                    onPress={() => {
+                      this.props.navigation.navigate("UserDetailScreen", {
+                        userkey: item.key,
+                      });
+                    }}
+                  />
+                </View>
+              </View>
+            )}
+          />
+          {/* 
         {this.state.userArr.map((item, i) => {
           return (
-            <ListItem
-              key={i}
-              chevron
-              bottomDivider
-              title={item.name}
-              subtitle={item.email}
-              onPress={() => {
-                this.props.navigation.navigate("UserDetailScreen", {
-                  userkey: item.key,
-                });
-              }}
-            />
-            // <View>
-            //   <Text>{item.name}</Text>
-            //   <Text>{item.email}</Text>
-            // </View>
+            // <ListItem
+            //   key={i}
+            //   chevron
+            //   bottomDivider
+            //   title={item.name}
+            //   subtitle={item.email}
+            //   onPress={() => {
+            //     this.props.navigation.navigate("UserDetailScreen", {
+            //       userkey: item.key,
+            //     });
+            //   }}
+            // />
+
+
+
+            <>
+              <Text>{item.name}</Text>
+            </>
           );
-        })}
+        })} */}
+        </View>
       </ScrollView>
     );
   }
@@ -81,14 +126,23 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingBottom: 22,
   },
-  preloader: {
-    left: 0,
-    right: 0,
-    top: 0,
-    bottom: 0,
-    position: "absolute",
-    alignItems: "center",
+  containers: {
+    flex: 1,
+    flexDirection: "row",
     justifyContent: "center",
+  },
+  buttonText: {
+    color: "#fff",
+    textAlign: "center",
+  },
+  buttonContainer: {
+    flex: 1,
+    margin: 3,
+    backgroundColor: "pink",
+  },
+  buttonContainers: {
+    flex: 1,
+    margin: 3,
   },
 });
 

@@ -1,5 +1,3 @@
-// screens/UserDetailScreen.js
-
 import React, { Component } from "react";
 import {
   Alert,
@@ -93,23 +91,23 @@ class UserDetailScreen extends Component {
     });
   }
 
-  openTwoButtonAlert = () => {
-    Alert.alert(
-      "Delete User",
-      "Are you sure?",
-      [
-        { text: "Yes", onPress: () => this.deleteUser() },
-        {
-          text: "No",
-          onPress: () => console.log("No item was removed"),
-          style: "cancel",
-        },
-      ],
-      {
-        cancelable: true,
-      }
-    );
-  };
+//   openTwoButtonAlert = () => {
+//     Alert.alert(
+//       "Delete User",
+//       "Are you sure?",
+//       [
+//         { text: "Yes", onPress: () => this.deleteUser() },
+//         {
+//           text: "No",
+//           onPress: () => console.log("No item was removed"),
+//           style: "cancel",
+//         },
+//       ],
+//       {
+//         cancelable: true,
+//       }
+//     );
+//   };
 
   render() {
     if (this.state.isLoading) {
@@ -154,8 +152,8 @@ class UserDetailScreen extends Component {
         <View>
           <Button
             title="Delete"
-            onPress={this.openTwoButtonAlert}
-            color="#E37399"
+            onPress={() => this.deleteUser()}
+            color="#FF0000"
           />
         </View>
       </ScrollView>

@@ -1,5 +1,3 @@
-// screens/AddUserScreen.js
-
 import React, { Component } from "react";
 import {
   Button,
@@ -71,6 +69,8 @@ class AddUserScreen extends Component {
       <ScrollView style={styles.container}>
         <View style={styles.inputGroup}>
           <TextInput
+            multiline={true}
+            numberOfLines={4}
             placeholder={"Name"}
             value={this.state.name}
             onChangeText={(val) => this.inputValueUpdate(val, "name")}
@@ -87,6 +87,8 @@ class AddUserScreen extends Component {
         </View>
         <View style={styles.inputGroup}>
           <TextInput
+            multiline={true}
+            numberOfLines={4}
             placeholder={"Address"}
             value={this.state.address}
             onChangeText={(val) => this.inputValueUpdate(val, "address")}
@@ -98,7 +100,6 @@ class AddUserScreen extends Component {
             onPress={() => this.storeUser()}
             color="#19AC52"
           />
-         
         </View>
       </ScrollView>
     );

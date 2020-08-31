@@ -21,7 +21,8 @@ class UserScreen extends Component {
       userArr: [],
     };
   }
-
+//the below method called after render method 
+//if thier is a child comp then first render child comp then parent componentdidmount method()
   componentDidMount() {
     this.unsubscribe = this.firestoreRef.onSnapshot(this.getCollection);
   }

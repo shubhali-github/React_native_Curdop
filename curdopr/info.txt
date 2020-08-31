@@ -1,0 +1,1 @@
+https://www.positronx.io/create-react-native-firebase-crud-app-with-firestore/

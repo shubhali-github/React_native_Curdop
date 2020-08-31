@@ -71,7 +71,7 @@ class AddUserScreen extends Component {
           <TextInput
             multiline={true}
             numberOfLines={4}
-            placeholder={"Name"}
+            placeholder={"Enter your Name"}
             value={this.state.name}
             onChangeText={(val) => this.inputValueUpdate(val, "name")}
           />
@@ -80,7 +80,7 @@ class AddUserScreen extends Component {
           <TextInput
             multiline={true}
             numberOfLines={4}
-            placeholder={"Email"}
+            placeholder={" Enter your Email Id"}
             value={this.state.email}
             onChangeText={(val) => this.inputValueUpdate(val, "email")}
           />
@@ -89,7 +89,7 @@ class AddUserScreen extends Component {
           <TextInput
             multiline={true}
             numberOfLines={4}
-            placeholder={"Address"}
+            placeholder={"Enter your Address"}
             value={this.state.address}
             onChangeText={(val) => this.inputValueUpdate(val, "address")}
           />

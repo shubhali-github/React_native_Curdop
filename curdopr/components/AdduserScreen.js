@@ -10,7 +10,6 @@ import {
   View,
 } from "react-native";
 import firebase from "../database/firebaseDb";
-
 class AddUserScreen extends Component {
   constructor() {
     super();
@@ -18,7 +17,7 @@ class AddUserScreen extends Component {
     this.state = {
       name: "",
       email: "",
-      mobile: "",
+      address: "",
       isLoading: false,
     };
   }
@@ -99,11 +98,7 @@ class AddUserScreen extends Component {
             onPress={() => this.storeUser()}
             color="#19AC52"
           />
-          <Button
-            title="Users List"
-            onPress={() => this.props.navigation.navigate("EditScreen")}
-            color="#19AC52"
-          />
+         
         </View>
       </ScrollView>
     );

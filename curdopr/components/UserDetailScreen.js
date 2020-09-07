@@ -20,7 +20,6 @@ class UserDetailScreen extends Component {
       isLoading: true,
     };
   }
-
   componentDidMount() {
     const dbRef = firebase
       .firestore()
@@ -41,13 +40,11 @@ class UserDetailScreen extends Component {
       }
     });
   }
-
   inputValueUpdate = (val, prop) => {
     const state = this.state;
     state[prop] = val;
     this.setState(state);
   };
-
   updateUser() {
     this.setState({
       isLoading: true,
@@ -79,7 +76,6 @@ class UserDetailScreen extends Component {
         });
       });
   }
-
   deleteUser() {
     const dbRef = firebase
       .firestore()

@@ -26,11 +26,9 @@ class UserScreen extends Component {
   componentDidMount() {
     this.unsubscribe = this.firestoreRef.onSnapshot(this.getCollection);
   }
-
   componentWillUnmount() {
     this.unsubscribe();
   }
-
   FlatListItemSeparator = () => {
     return (
       <View

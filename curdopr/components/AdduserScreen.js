@@ -19,7 +19,6 @@ class AddUserScreen extends Component {
       isLoading: false,
     };
   }
-
   inputValueUpdate = (val, prop) => {
     const state = this.state;
     state[prop] = val;
@@ -56,7 +55,6 @@ class AddUserScreen extends Component {
         });
     }
   }
-
   render() {
     if (this.state.isLoading) {
       return (
@@ -105,7 +103,6 @@ class AddUserScreen extends Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

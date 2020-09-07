@@ -40,7 +40,6 @@ function MyStack() {
     </Stack.Navigator>
   );
 }
-
 export default function App() {
   return (
     <NavigationContainer>

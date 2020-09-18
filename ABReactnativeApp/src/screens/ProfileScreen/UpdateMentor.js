@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Component } from "react";
 import { Text, TextInput, StyleSheet, View, Button } from "react-native";
 import { firebase } from "../../firebase/config";
-export default class UpdateMentees extends Component {
+export default class UpdateMentor extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,7 +40,7 @@ export default class UpdateMentees extends Component {
     this.setState({ errorMessage: "", loading: true });
     const entityRef = firebase
       .firestore()
-      .collection("mentees")
+      .collection("entities")
       .doc(this.props.route.params.user.id);
     entityRef
       .set({
@@ -58,7 +58,7 @@ export default class UpdateMentees extends Component {
           address: "",
           isLoading: false,
         });
-        this.props.navigation.navigate("MenteesDashboard");
+        this.props.navigation.navigate("Mentors");
       })
       .catch((error) => {
         console.error("Error: ", error);

@@ -22,7 +22,7 @@ export default function Mentors(props) {
   const [entities, setEntities] = useState([]);
   const entityRef = firebase.firestore().collection("entities");
   // const userID = props.extraData.id;
-  const userID = "9bwehUOF9WQ1L0E0Sd9z7WcT3G22";
+  const userID = props.extraData.id;
   const navigation = props.navigation;
   useEffect(() => {
     console.log("Props id", props.extraData);
@@ -74,14 +74,11 @@ export default function Mentors(props) {
   //remove mentees
   const Removeuser = (key) => {
     const dbref = firebase.firestore().collection("entities");
-    // const newkey = JSON.stringify(key);
     console.log("Key>>>:", key);
-    //   console.log("Newkey>>>", newkey);
     dbref
       .doc(key)
       .delete()
       .then((res) => {
-        // navigation.navigate("Profile");
         console.log("Document successfully deleted!");
       })
       .catch(function (error) {

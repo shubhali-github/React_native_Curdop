@@ -40,7 +40,7 @@ export default StyleSheet.create({
     containers: {
         flex: 1,
         flexDirection: "row",
-        display: "block",
+        // display: "block",
         borderRadius: 3,
         justifyContent: "center",
         backgroundColor: "#DB7093"

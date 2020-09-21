@@ -46,7 +46,6 @@ export default function MenteesDashboard(props) {
   const Signoutuser = () => {
     firebase.auth().signOut();
     console.log("SignOUT");
-    // navigation.navigate("Login");
   };
   //delete user
   const deleteuser = () => {
@@ -196,12 +195,6 @@ export default function MenteesDashboard(props) {
           />
         </View>
       )}
-      {/* <TouchableOpacity style={styles.buttons} onPress={Signoutuser}>
-        <Text style={styles.buttonText}>Sign Out</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.buttons} onPress={deleteuser}>
-        <Text style={styles.buttonText}>Delete Account</Text>
-      </TouchableOpacity> */}
     </View>
   );
 }

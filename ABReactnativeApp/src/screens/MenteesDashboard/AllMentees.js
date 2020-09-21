@@ -53,31 +53,7 @@ export default function AllMentees(props) {
     };
     entityRef.add(data);
   };
-  const onAddButtonPress = () => {
-    if (entityName && entityName.length > 0) {
-      const timestamp = firebase.firestore.FieldValue.serverTimestamp();
-      const data = {
-        name: entityName,
-        email: email,
-        phoneno: phoneno,
-        address: address,
-        authorID: userID,
-        createdAt: timestamp,
-      };
-      entityRef
-        .add(data)
-        .then((_doc) => {
-          setEntityName("");
-          setAddress("");
-          setEmail("");
-          setPhoneno("");
-          Keyboard.dismiss();
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    }
-  };
+  
   const FlatListItemSeparator = () => {
     return (
       <View
@@ -91,28 +67,27 @@ export default function AllMentees(props) {
   };
   const renderEntity = ({ item, index }) => {
     const key = item.id;
+    console.log("key",key)
     return (
       <View style={styles.containers}>
         <Text style={styles.buttonContainer}>{item.name}</Text>
         <Text style={styles.buttonContainer}>{item.phoneno}</Text>
         <Text style={styles.buttonContainer}>{item.email}</Text>
         <Text style={styles.buttonContainer}>{item.address}</Text>
-        <Text style={{ alignItems: "flex-start" }}>
-          <Button
-            title="ADD Mentees"
-            onPress={() => AddasMymentees(item)}
-            color="#009387"
-          />
-        </Text>
-        {/*
-        </Text>
-        <Text style={{ alignItems: "flex-start" }}>
-          <Button
-            title="Update"
-            onPress={() => updateuser(item)}
-            color="#009387"
-          />
-        </Text> */}
+        {!(item.authorID == userID) ? (
+          <>
+            {" "}
+            <Text style={{ alignItems: "flex-start" }}>
+              <Button
+                title="ADD Mentees"
+                onPress={() => AddasMymentees(item)}
+                color="#009387"
+              />
+            </Text>
+          </>
+        ) : (
+          <> </>
+        )}
       </View>
     );
   };

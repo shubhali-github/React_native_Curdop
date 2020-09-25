@@ -1,23 +1,28 @@
-import React, { useEffect, useState } from "react";
-import {
-  FlatList,
-  Keyboard,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  Button,
-} from "react-native";
-import { firebase } from "../../firebase/config";
-export default function ProfileScreen(props) {
-  console.log("profile", props);
-  const user = props.extraData;
-  return (
-    <View>
-      <Text>Welcome to profile screen</Text>
-      <Text>Name:{user.fullName}</Text>
+import React, { Component, useEffect, useState } from "react";
+import { Text, View } from "react-native";
+export default class ProfileScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      email: "",
+    };
+  }
 
-      <Text>Email ID:{user.email}</Text>
-    </View>
-  );
+  componentDidMount() {
+    const { fullName, email } = this.props.extraData;
+    this.setState({
+      fullName: fullName,
+      email: email,
+    });
+  }
+  render() {
+    return (
+      <View>
+        <Text>Welcome to profile screen</Text>
+        <Text>Name:{this.state.fullName}</Text>
+        <Text>Email ID:{this.state.email}</Text>
+      </View>
+    );
+  }
 }

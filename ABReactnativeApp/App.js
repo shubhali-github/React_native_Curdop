@@ -13,12 +13,10 @@ import { firebase } from "./src/firebase/config";
 import LoginScreen from "./src/screens/LoginScreen/LoginScreen";
 import Mentoors from "./src/screens/MentorsScreen/MentorsScreen";
 import ProfileScreen from "./src/screens/ProfileScreen/ProfileScreen";
-import MenteesDashboard from "./src/screens/MenteesDashboard/MenteesDashboard";
+import MemberDashboard from "./src/screens/MenteesDashboard/MenteesDashboard";
 import RegistrationScreen from "./src/screens/RegistrationScreen/RegistrationScreen";
-import UpdateMentor from "./src/screens/ProfileScreen/UpdateMentor";
-import UpdateMentees from "./src/screens/ProfileScreen/UpdateMentees";
 import HomeScreen from "./src/screens/HomeScreen/HomeScreen";
-import AllMentees from "./src/screens/MenteesDashboard/AllMentees";
+import AllMember from "./src/screens/MenteesDashboard/AllMentees";
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
@@ -108,8 +106,6 @@ function MentorsScreenStack({ navigation }) {
       >
         {(props) => <Mentoors {...props} extraData={global.SampleVar} />}
       </Stack.Screen>
-      <Stack.Screen name="UpdateMentor" component={UpdateMentor} />
-      <Stack.Screen name="UpdateMentees" component={UpdateMentees} />
     </Stack.Navigator>
   );
 }
@@ -170,7 +166,7 @@ function HomeScreenStack({ navigation }) {
   );
 }
 
-function MenteesScreenStack({ navigation }) {
+function MemberScreenStack({ navigation }) {
   return (
     <Stack.Navigator
       initialRouteName="SecondPage"
@@ -188,20 +184,18 @@ function MenteesScreenStack({ navigation }) {
       }}
     >
       <Stack.Screen
-        name="MenteesScreen"
+        name="MemberScreen"
         options={{
-          title: "My Mentees", //Set Header Title
+          title: "My Member", //Set Header Title
         }}
       >
-        {(props) => (
-          <MenteesDashboard {...props} extraData={global.SampleVar} />
-        )}
+        {(props) => <MemberDashboard {...props} extraData={global.SampleVar} />}
       </Stack.Screen>
     </Stack.Navigator>
   );
 }
 
-function AllMenteesScreenStack({ navigation }) {
+function AllMemberScreenStack({ navigation }) {
   return (
     <Stack.Navigator
       initialRouteName="SecondPage"
@@ -219,13 +213,13 @@ function AllMenteesScreenStack({ navigation }) {
       }}
     >
       <Stack.Screen
-        name="MenteesScreen"
+        name="MemberScreen"
         options={{
-          title: "My Mentees", //Set Header Title
+          title: "All Member", //Set Header Title
         }}
       >
         {(props) => (
-          <AllMentees {...props} extraData={global.SampleVar} />
+          <AllMember {...props} extraData={global.SampleVar} />
         )}
       </Stack.Screen>
     </Stack.Navigator>
@@ -278,18 +272,18 @@ function Stacks() {
               options={{ drawerLabel: "Home" }}
               component={HomeScreenStack}
             />
-            <Drawer.Screen name="Menees" options={{ drawerLabel: "My Mentees" }}>
-              {(props) => <MenteesScreenStack {...props} extraData={userrr} />}
+            <Drawer.Screen name="Menees" options={{ drawerLabel: "My Member" }}>
+              {(props) => <MemberScreenStack {...props} extraData={userrr} />}
             </Drawer.Screen>
             <Drawer.Screen
-              name="AllMentees"
-              options={{ drawerLabel: "All Mentees" }}
+              name="AllMember"
+              options={{ drawerLabel: "All Member" }}
             >
-              {(props) => <AllMenteesScreenStack {...props} extraData={userrr} />}
+              {(props) => <AllMemberScreenStack {...props} extraData={userrr} />}
             </Drawer.Screen>
             <Drawer.Screen
-              name="MenteesDashboard"
-              options={{ drawerLabel: "My Mentors" }}
+              name="MemberDashboard"
+              options={{ drawerLabel: "Mentors" }}
               component={MentorsScreenStack}
             />
             <Drawer.Screen
